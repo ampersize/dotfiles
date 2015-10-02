@@ -1,7 +1,28 @@
 " ~/.vimrc
-" pathogen
-execute pathogen#infect()
-filetype plugin indent on
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Yggdroot/indentLine'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'scrooloose/syntastic'
+Plugin 'bling/vim-airline'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-sensible'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 "
 " For UTF8
@@ -82,20 +103,12 @@ noremap <C-w> :tabclose<CR>
 noremap <C-Right> :tabnext<CR>
 noremap <C-Left> :tabprev<CR>
 
-
-
-" LOL
-" function! PlaySound()
-"	  silent! exec '!afplay ~/.vim/support/typewriter-key-1.wav &'
-"	endfunction
-"autocmd CursorMovedI * call PlaySound()
-
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_balloons=1
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_echo_current_error=1
 let g:syntastic_enable_highlighting=1
-let g:syntastic_auto_jump=1
+let g:syntastic_auto_jump=0
 let g:syntastic_auto_loc_list=1
 let g:syntastic_loc_list_height=5
 let g:syntastic_aggregate_errors=1
