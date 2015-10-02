@@ -6,27 +6,27 @@
 
 ########## Variables
 
-dir=~/dotfiles                    # dotfiles directory
-files="vimrc vim"    # list of files/folders to symlink in homedir
-dirs = "bin"
+checkout=$(basename $(pwd)) # dotfiles directory
+files="vimrc vim"           # list of files/folders to symlink in homedir
+dirs="bin"
 
 ##########
 mkdir ~/dotfiles_old/
-cd $dir
+cd $checkout
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 for file in $files; do
 	echo "Moving any existing dotfiles from ~ to $olddir"
 	mv ~/.$file ~/dotfiles_old/
-	echo "Creating symlink to $file in home directory."
-	ln -s $dir/$file ~/.$file
+	echo "Creating symlink to $checkout in home directory."
+	ln -s $checkout/$file ~/.$file
 done
 
 cd $dir
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
-for directory in $dirs; do
+for dir in $dirs; do
 	echo "Moving any existing dotfiles from ~ to $olddir"
-	mv ~/$directory ~/dotfiles_old/
-	echo "Creating symlink to $directory in home directory."
-	ln -s $dir/$directory ~/$directory
+	mv ~/$dir ~/dotfiles_old/
+	echo "Creating symlink to $checkout in home directory."
+	ln -s $checkout/$dir ~/$dir
 done
