@@ -6,8 +6,8 @@
 
 ########## Variables
 
-checkout=$(basename $(pwd)) # dotfiles directory
-files="vimrc vim"           # list of files/folders to symlink in homedir
+checkout=~/dotfiles # dotfiles directory
+files="vimrc vim"   # list of files/folders to symlink in homedir
 dirs="bin"
 
 ##########

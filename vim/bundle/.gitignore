@@ -1,0 +1,11 @@
+indentLine
+nerdtree
+nerdtree-git-plugin
+syntastic
+vim-airline
+vim-colors-solarized
+vim-fugitive
+vim-gitgutter
+vim-rails
+vim-ruby
+vim-sensible
