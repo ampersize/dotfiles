@@ -7,7 +7,7 @@
 ########## Variables
 
 checkout=~/dotfiles # dotfiles directory
-files="vimrc vim"   # list of files/folders to symlink in homedir
+files="vimrc vim toprc"   # list of files/folders to symlink in homedir
 dirs="bin"
 
 ##########
