@@ -1,0 +1,134 @@
+# $HOME/.screenrc
+  unsetenv DISPLAY
+# detach on hangup
+  autodetach            on              # default: on
+  crlf                  off             # default: off
+  deflogin              off             # default: on
+# defsilence            off             # default: off
+# hardcopy_append       on              # default: off
+  hardcopy_append       off             # default: off
+# nethack               on              # default: off
+# don't display the copyright page
+  startup_message       off             # default: on
+# no annoying audible bell, please
+  vbell                 on
+
+# ===============================================================
+# 030723 screen version >= 4.00.00beta1 supports the following
+# commands:
+#  defnonblock 1
+#  blankerprg rain -d 100
+#  idle 120 blanker
+
+# ===============================================================
+# VARIABLES - Number values
+# ===============================================================
+  defscrollback         1000            # default: 100
+# msgminwait            3               # default: 1
+  silencewait           15              # default: 30
+
+  hardcopydir           $HOME/.hardcopy
+
+# shell:  Default process started in screen's windows.
+# Makes it possible to use a different shell inside screen
+# than is set as the default login shell.  Halleluja! :-)
+  shell                 zsh
+# shell                 bash
+# shell                 ksh
+
+  caption always "%{+b rk}%H%{gk} |%c %{yk}%d.%m.%Y | %{rw}%n%f %t %{bk} | %?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%? | %{rk} Load: %l %{wk}"
+  sorendition 10 99 # default!
+  activity              "activity in %n (%t) [%w:%s]~"
+
+# pass on the "beep" (CTRL-G) by adding a '~':
+# bell                  "%C -> %n%f %t bell!~"
+  bell                  "bell     in %n (%t) [%w:%s]~"
+
+  pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
+  vbell_msg             " *beep* "
+
+# ===============================================================
+# Key bindings
+# ===============================================================
+# Remove some default key bindings by binding
+# them to "nothing" (empty right-hand-side):
+#
+# bind .  dumptermcap # default
+  bind .
+# bind ^\ quit        # default
+  bind ^\
+# bind \\ quit        # default
+  bind \\
+# bind h
+# bind ^h ???         # default
+# bind ^h
+# bind }  history     # default
+# bind }
+
+# 040126 To be able to select windows with n > 9 ->
+# press "C-a - #" instead of just "C-a #"
+  bind - command -c select_1n
+  bind -c select_1n 0 select 10
+  bind -c select_1n 1 select 11
+  bind -c select_1n 2 select 12
+  bind -c select_1n 3 select 13
+  bind -c select_1n 4 select 14
+  bind -c select_1n 5 select 15
+  bind -c select_1n 6 select 16
+  bind -c select_1n 7 select 17
+  bind -c select_1n 8 select 18
+  bind -c select_1n 9 select 19
+  bind -c select_1n - command -c select_2n
+  bind -c select_2n 0 select 20
+  bind -c select_2n 1 select 21
+  bind -c select_2n 2 select 22
+  bind -c select_2n 3 select 23
+  bind -c select_2n 4 select 24
+  bind -c select_2n 5 select 25
+  bind -c select_2n 6 select 26
+  bind -c select_2n 7 select 27
+  bind -c select_2n 8 select 28
+  bind -c select_2n 9 select 29
+  bind -c select_2n - select -
+
+# ==============================================================
+# BIND and the Services:
+# ==============================================================
+# remove some stupid / dangerous key bindings
+  bind k
+  bind ^k
+  bind .
+  bind ^\
+  bind \\
+  bind ^h
+#  bind h
+  bind h  hardcopy
+# make them better
+  bind 'K' kill
+  bind 'I' login on
+  bind 'O' login off
+  bind '}' history
+
+# Yet another hack:
+# Prepend/append register [/] to the paste if ^a^] is pressed.
+# This lets me have autoindent mode in vi.
+  register [ "\033:se noai\015a"
+  register ] "\033:se ai\015a"
+  bind ^] paste [.]
+
+# 030511 Some usefull abbreviations
+  bindkey -t ROFL stuff *ROFL*
+  bindkey -t LOL stuff *LOL*
+# 030511 Workaround for stupid machines without xmodmap ;-)
+  bindkey -t ?a stuff "?"
+  bindkey -t ?A stuff "?"
+  bindkey -t ?o stuff "?"
+  bindkey -t ?O stuff "?"
+  bindkey -t ?u stuff "?"
+  bindkey -t ?U stuff "?"
+  bindkey -t ?s stuff "?"
+
+# UTF-8
+defutf8 on
+
+# EOF  vim: ts=8 et nowrap
