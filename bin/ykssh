@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set -e 
+# set -x
+
+LAUNCHAGENT=com.openssh.ssh-agent
+
+PKCS11LIB=/usr/local/lib/opensc-pkcs11.so
+
+ssh-add  -e ${PKCS11LIB} || true
+launchctl stop ${LAUNCHAGENT}
+launchctl start ${LAUNCHAGENT} 
+sleep 0.05
+
+ssh-add -s ${PKCS11LIB} 
+ssh-add -A
+
+# Unused keys go to ~/.ssh/rmfromagent-[keyname]
+ssh-add   -d ~/.ssh/rmfromagent-*  2> /dev/null || true
